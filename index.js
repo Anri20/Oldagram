@@ -6,7 +6,8 @@ const posts = [
         avatar: "images/avatar-vangogh.jpg",
         post: "images/post-vangogh.jpg",
         comment: "just took a few mushrooms lol",
-        likes: 21
+        likes: 21,
+        liked: false,
     },
     {
         name: "Gustave Courbet",
@@ -15,7 +16,8 @@ const posts = [
         avatar: "images/avatar-courbet.jpg",
         post: "images/post-courbet.jpg",
         comment: "i'm feelin a bit stressed tbh",
-        likes: 4
+        likes: 4,
+        liked: false,
     },
     {
         name: "Joseph Ducreux",
@@ -24,7 +26,8 @@ const posts = [
         avatar: "images/avatar-ducreux.jpg",
         post: "images/post-ducreux.jpg",
         comment: "gm friends! which coin are YOU stacking up today?? post below and WAGMI!",
-        likes: 152
+        likes: 152,
+        liked: false,
     }
 ]
 
@@ -50,8 +53,6 @@ let template = `
 
 const main = document.querySelector("main")
 
-// main.innerHTML += template
-
 let stringHTML = ""
 posts.map((post, index) => {
     console.log(post)
@@ -64,16 +65,65 @@ posts.map((post, index) => {
                 <address>${post.location}</address>
             </div>
         </div>
-        <img class="post" src=${post.post} alt="content">
+        <img id="post-${index}" class="post" ondblclick="handleDoubleClick(this)" src=${post.post} alt="content">
         <div class="btn-container">
-            <img class="like-button btn" src="images/icon-heart.png" alt="like button">
+            <img id="like-${index}" class="like-button btn" onclick="handleClick(this)" src="images/icon-heart.png" alt="like button">
             <img class="comment-button btn" src="images/icon-comment.png" alt="comment button">
             <img class="dm-button btn" src="images/icon-dm.png" alt="dm button">
         </div>
-        <span class="like-count">${post.likes} ${post.likes > 1 ? "likes" : "like"}</span>
+        <span id="like-${index}-count" class="like-count">${post.likes} ${post.likes > 1 ? "likes" : "like"}</span>
         <p><span class="username">${post.username}</span> ${post.comment}</p>
     </div>
     `
 })
 
 main.innerHTML = stringHTML
+
+
+// const post = document.querySelector("img.post")
+// const btnLike = document.querySelector("img.like-button")
+
+// post.addEventListener("dblclick", function (e) {
+//     console.log("post double clicked")
+//     let id = e.currentTarget.id.at(-1)
+//     console.log(id)
+//     console.log(posts[id])
+// })
+
+// btnLike.addEventListener("click", function (e) {
+//     console.log("btn like clicked")
+//     let id = e.currentTarget.id.at(-1)
+//     console.log(id)
+//     console.log(posts[id])
+
+// })
+
+function handleDoubleClick(e) {
+    let id = e.id.at(-1)
+    
+    const likeCount = document.getElementById(`like-${id}-count`)
+    if (!posts[id].liked) {
+        posts[id].likes += 1
+        posts[id].liked = true
+    } else {
+        posts[id].likes -= 1
+        posts[id].liked = false
+    }
+
+    likeCount.textContent = `${posts[id].likes} likes`
+}
+
+function handleClick(e) {
+    let id = e.id.at(-1)
+
+    const likeCount = document.getElementById(`like-${id}-count`)
+    if (!posts[id].liked) {
+        posts[id].likes += 1
+        posts[id].liked = true
+    } else {
+        posts[id].likes -= 1
+        posts[id].liked = false
+    }
+    
+    likeCount.textContent = `${posts[id].likes} likes`
+}
