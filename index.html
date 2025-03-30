@@ -13,9 +13,32 @@
 </head>
 
 <body>
-    <img src="images/logo.png">
-    <script src="index.js"></script>
-
+    <header>
+        <div class="container header">
+            <img id="logo" src="images/logo.png" alt="Oldagram Logo">
+            <img id="user-avatar" class="avatar" src="images/user-avatar.png" alt="user-avatar">
+        </div>
+    </header>
+    <main>
+        <div class="container main">
+            <div class="post-header">
+                <img class="posters avatar" src="images/avatar-vangogh.jpg" alt="content posters avatar">
+                <div>
+                    <label for="post-avatar">Name</label>
+                    <address>Location</address>
+                </div>
+            </div>
+            <img class="post" src="images/post-vangogh.jpg" alt="content">
+            <div class="btn-container">
+                <img class="like-button btn" src="images/icon-heart.png" alt="like button">
+                <img class="comment-button btn" src="images/icon-comment.png" alt="comment button">
+                <img class="dm-button btn" src="images/icon-dm.png" alt="dm button">
+            </div>
+            <span class="like-count">100 likes</span>
+            <p><span class="username">username</span> description</p>
+        </div>
+    </main>
+    <script type="module" src="index.js"></script>
 </body>
 
 </html>

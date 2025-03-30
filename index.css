@@ -2,4 +2,78 @@ html,
 body {
     margin: 0;
     padding: 0;
+    font-family: "Source Sans 3", Arial, Helvetica, sans-serif;
+}
+
+div.container {
+    width: 375px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:
+        0 1px 1px rgba(0, 0, 0, 0.15),
+        -1px 0 1px rgba(0, 0, 0, 0.15),
+        1px 0 1px rgba(0, 0, 0, 0.15);
+}
+
+div.main {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+img#logo,
+img#user-avatar {
+    margin: 15px;
+}
+
+img#logo {
+    width: 128px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+div.post-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 10px 8px 10px;
+}
+
+label {
+    font-size: 0.8rem;
+}
+
+address {
+    font-size: 0.75rem;
+}
+
+.post {
+    width: 100%;
+}
+
+div.btn-container {
+    margin: 10px 0 5px 10px;
+}
+
+.btn {
+    width: 28px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.like-count,
+p {
+    margin: 0 0 10px 10px;
+}
+
+label,
+.like-count,
+.username {
+    font-weight: bold;
 }

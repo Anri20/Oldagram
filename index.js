@@ -28,3 +28,4 @@ const posts = [
     }
 ]
 
+console.log(posts)
